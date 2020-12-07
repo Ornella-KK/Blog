@@ -1,13 +1,36 @@
-{% extends 'base.html'%}
-{% import 'macros.html' as macro%}
+{% extends "base.html" %} {% import "bootstrap/wtf.html" as wtf %} {% import 'macros.html' as macro %}{% block styles %}{{super()}}
+<!--super() function tells Jinja not to override any code that is defined in the block-->
+{% endblock %}
+<br> {% block content %}{{macro.displayBlogList(blog_list)}}
+<div>
+    <div class="container-fluid" style="font-family: 'Lato', sans serif;">
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="container" id="block-text">
+                    <br>
+                    <br>
+                    <div class="col-md-6">
+                        <p class="jumbotron" style="font-size: 20px; float:right;"> <strong> Welcome to my personal blog, here's some interesting posts which inspires me and i thought i can share them with you, feel free to naviguate through and leave some comments! </strong>
+                    </div>
+                </div>
+                <div class="container">
+                    <div style="border-style: solid; color:rgb(247, 159, 174)">
+                        <p style="color:black">{{quote.quote}}</p>
+                        <p style="color:black">{{quote.author}}</p>
+                    </div>
+                </div>
 
 
-<!-- Content block -->
-{% block content %}
+                <div class="container">
+                    <div class="content">
+                        <h3><strong>POSTS</strong></h3>
+                        {{macro.displayBlogList(blog)}}
 
-<!-- Popular movie -->
-<h3> Quotes</h3>
-<p>
-    {{ macro.displayQuoteList(all_quotes)}}
-</p>
-{% endblock%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock%}

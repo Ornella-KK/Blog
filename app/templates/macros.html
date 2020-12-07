@@ -1,10 +1,13 @@
-{% macro displayQuoteList(all_quotes) %}
+{% macro displayBlogList(blog) %} {% for blogs in blog %}
+<div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 movie-card" style="border-block-color: pink">
 
-    {% for quote in all_quotes %}
-        <h2>{{ quote.title}}</h2>
-        <span>{{quote.author}}</span><br>
-        <span>{{quote.quote}}</span>
+    <h3>{{ blogs.title}}</h3>
+    <p>{{blogs.post}}</p>
+    <br>
+    <a class="btn btn-primary btn-success" href="{{url_for('main.new_comment',id =blogs.id)}}">comment</a>
+    <p>{{blogs.comment}}</p>
 
-    {% endfor %}
+    
+</div>
 
-{% endmacro %}
+{% endfor %} {% endmacro %}
