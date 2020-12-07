@@ -1,0 +1,10 @@
+{% macro displayQuoteList(all_quotes) %}
+
+    {% for quote in all_quotes %}
+        <h2>{{ quote.title}}</h2>
+        <span>{{quote.author}}</span><br>
+        <span>{{quote.quote}}</span>
+
+    {% endfor %}
+
+{% endmacro %}
