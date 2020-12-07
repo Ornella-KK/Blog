@@ -52,7 +52,7 @@ def nu_blog():
         nu_blog = Blog( post=post, title = title)
         nu_blog.save_blogz()
         return redirect(url_for('main.index'))
-    return render_template('blog.html',form=form, blog = blog)
+    return render_template('post.html',form=form, blog = blog)
 
 #viewing a pitch with it's comments
 @main.route('/blog/view_blog/<int:id>', methods =['GET', 'POST'])
@@ -66,7 +66,7 @@ def view_blog(id):
     if blogz is None:
         abort(404)
         
-    return render_template('blog.html',blogz=blogz) 
+    return render_template('post.html',blogz=blogz) 
 
 @main.route('/delete_blog/<int:id>',methods = ['GET','POST'])
 @login_required
@@ -94,7 +94,7 @@ def update_blog(id):
         db.session.commit()
         flash('Your post has been updated')
         return redirect(url_for('.index', id =id))
-    return render_template('blog.html', form = form,blog=blogs)
+    return render_template('post.html', form = form,blog=blogs)
 
     
           
@@ -179,4 +179,3 @@ def subscribe():
         return redirect(url_for('sub'))
     
     return render_template('index.html', title= title, subscribe_form=form)
-    
